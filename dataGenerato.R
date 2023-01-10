@@ -25,3 +25,5 @@ measurements <- measurements%>%
   rename("Organism" = 1,
          "Observer" = 4)
 
+# Exports data to csv file
+write.csv(measurements, file = "C:/BIOL432/BIOL432_Assignment1/measurements.csv")
