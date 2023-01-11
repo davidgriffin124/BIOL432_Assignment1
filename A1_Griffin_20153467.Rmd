@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Loading Library
 ```{r}
 library(dplyr)
+library(ggplot2)
 ```
 
 # Script generating limb data for 5 species of capuchin monkey
@@ -52,6 +53,13 @@ limbdat %>%
   count()
 ```
 
+# Box plot comparing species
+```{r}
 
+boxplot1 <- ggplot(limbdat, aes(x=Organism, y=Limb_volume)) + 
+  geom_boxplot() + theme_bw()
+
+boxplot1
+```
 
 
