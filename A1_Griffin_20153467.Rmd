@@ -1,0 +1,41 @@
+---
+title: "BIOL 432 - Assignment 1"
+author: "David Griffin"
+date: '2023-01-11'
+output: html_document
+---
+[Link to my repository](https://github.com/davidgriffin124/BIOL432_Assignment1)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Loading Library
+```{r}
+library(dplyr)
+```
+
+# Script generating limb data for 5 species of capuchin monkey
+```{r}
+source('dataGenerato.R')
+```
+
+# Script estimating limb volume and adding column
+```{r}
+source('volumeEstimato.R')
+```
+
+# Loading revised limb data
+```{r}
+limbdat = read.csv("measurements.csv")
+```
+
+
+
+
+
+
+
+
+
+
