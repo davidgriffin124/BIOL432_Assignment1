@@ -62,4 +62,11 @@ boxplot1 <- ggplot(limbdat, aes(x=Organism, y=Limb_volume)) +
 boxplot1
 ```
 
+```{r}
+ggplot (data = limbdat, aes(x = Limb_volume)) + geom_histogram() + xlab("Limb Volume") + ylab("Count") + facet_wrap(~Organism, nrow=3, ncol=2) + theme_bw()
+
+  
+  
+  scale_colour_gradient(limits=c(-1, 1), low = "green", high = "red") + scale_y_continuous(limits=c(1, 1000), breaks=c(1, 10, 100, 1000), trans="log1p") + xlab("Nucleotide Position") + ylab("Read Count Per Million") 
+```
 
