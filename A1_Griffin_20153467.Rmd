@@ -30,7 +30,11 @@ source('volumeEstimato.R')
 limbdat = read.csv("measurements.csv")
 ```
 
-
+# Sorting data by Species, then b Observer, then by Limb Volume
+```{r}
+limbdat = limbdat %>%
+  arrange(Organism, Observer, Limb_volume)
+```
 
 
 
