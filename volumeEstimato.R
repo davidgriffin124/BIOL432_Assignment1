@@ -10,4 +10,4 @@ dat2 = dat %>%
          .after = Limb_length)
 
 # Updates measurements file to include volume column
-write.csv(dat2, "measurements.csv")
+write.csv(dat2, "measurements.csv", row.names = F)
