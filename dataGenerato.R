@@ -26,4 +26,4 @@ measurements <- measurements%>%
          "Observer" = 4)
 
 # Exports data to csv file
-write.csv(measurements, file = "C:/BIOL432/BIOL432_Assignment1/measurements.csv")
+write.csv(measurements, file = "C:/BIOL432/BIOL432_Assignment1/measurements.csv", row.names = F)
