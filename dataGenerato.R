@@ -8,8 +8,8 @@ X = c("Cebus capucinus", "Cebus cuscinus", "Cebus brunneus", "Sapajus apella", "
 orgs = sample(X, 100, replace = T)
 
 # Samples limb width & length from 2 normal distributions, 100 times
-Limb_width = rnorm(100, 3, 0.8)
-Limb_length = rnorm(100, 50, 6)
+Limb_width = rnorm(100, 3, 0.3)
+Limb_length = rnorm(100, 50, 4)
 
 # Creates list of 3 potential observers
 Y = c("David G", "Eric W", "Emily P")
