@@ -37,8 +37,20 @@ limbdat = limbdat %>%
 ```
 
 
+# Table displaying average Limb Volume by Species
+```{r}
+limbdat %>%
+  group_by(Organism)%>%
+  summarize(Average_Limb_Volume = mean(Limb_volume))
+```
 
 
+# Table displaying number of observations by Species x Observer
+```{r}
+limbdat %>%
+  group_by(Organism, Observer) %>%
+  count()
+```
 
 
 
