@@ -10,35 +10,35 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Loading Library
+##### Loading Library
 ```{r}
 library(dplyr)
 library(ggplot2)
 ```
 
-# Script generating limb data for 5 species of capuchin monkey
+##### Script generating limb data for 5 species of capuchin monkey
 ```{r}
 source('dataGenerato.R')
 ```
 
-# Script estimating limb volume and adding column
+##### Script estimating limb volume and adding column
 ```{r}
 source('volumeEstimato.R')
 ```
 
-# Loading revised limb data
+##### Loading revised limb data
 ```{r}
 limbdat = read.csv("measurements.csv")
 ```
 
-# Sorting data by Species, then b Observer, then by Limb Volume
+##### Sorting data by Species, then b Observer, then by Limb Volume
 ```{r}
 limbdat = limbdat %>%
   arrange(Organism, Observer, Limb_volume)
 ```
 
 
-# Table displaying average Limb Volume by Species
+##### Table displaying average Limb Volume by Species
 ```{r}
 limbdat %>%
   group_by(Organism)%>%
@@ -46,27 +46,20 @@ limbdat %>%
 ```
 
 
-# Table displaying number of observations by Species x Observer
+##### Table displaying number of observations by Species x Observer
 ```{r}
 limbdat %>%
   group_by(Organism, Observer) %>%
   count()
 ```
 
-# Box plot comparing species
+##### Box plot comparing species limb volume
 ```{r}
-
-boxplot1 <- ggplot(limbdat, aes(x=Organism, y=Limb_volume)) + 
-  geom_boxplot() + theme_bw()
-
-boxplot1
+ggplot(limbdat, aes(x=Organism, y=Limb_volume)) + geom_boxplot() + xlab("\n Species") + ylab("Limb Volume \n") + theme_bw() + labs(title = "Limb Volume Frequency for Capuchin Monkeys", caption = "\n\n Figure 1. Limb volume distributions for 100 random samples of 5 species of capuchin monkey") + theme(plot.title = element_text(hjust = 0.5), plot.caption = element_text(hjust = 0.5))
 ```
 
+##### Multi-panel plot showing frequency histograms for each species
 ```{r}
-ggplot (data = limbdat, aes(x = Limb_volume)) + geom_histogram() + xlab("Limb Volume") + ylab("Count") + facet_wrap(~Organism, nrow=3, ncol=2) + theme_bw()
-
-  
-  
-  scale_colour_gradient(limits=c(-1, 1), low = "green", high = "red") + scale_y_continuous(limits=c(1, 1000), breaks=c(1, 10, 100, 1000), trans="log1p") + xlab("Nucleotide Position") + ylab("Read Count Per Million") 
+ggplot(data = limbdat, aes(x = Limb_volume)) + geom_histogram() + xlab("\n Limb Volume") + ylab("Count \n") + facet_wrap(~Organism, nrow = 2, ncol = 3) + theme_bw() + labs(title = "Limb Volume Frequency for Capuchin Monkeys", caption = "\n\n Figure 2. Frequency of various limb volumes for 100 random samples of 5 species of capuchin monkey") + theme(plot.title = element_text(hjust = 0.5), plot.caption = element_text(hjust = 0.5))
 ```
 
