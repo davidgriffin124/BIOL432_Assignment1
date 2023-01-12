@@ -4,39 +4,45 @@ author: "David Griffin"
 date: '2023-01-11'
 output: html_document
 ---
+    
 [Link to my repository](https://github.com/davidgriffin124/BIOL432_Assignment1)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+<br>
 
 ##### Loading Library
 ```{r}
 library(dplyr)
 library(ggplot2)
 ```
+<br>
 
 ##### Script generating limb data for 5 species of capuchin monkey
 ```{r}
 source('dataGenerato.R')
 ```
+<br>
 
 ##### Script estimating limb volume and adding column
 ```{r}
 source('volumeEstimato.R')
 ```
+<br>
 
 ##### Loading revised limb data
 ```{r}
 limbdat = read.csv("measurements.csv")
 ```
+<br>
 
 ##### Sorting data by Species, then b Observer, then by Limb Volume
 ```{r}
 limbdat = limbdat %>%
   arrange(Organism, Observer, Limb_volume)
 ```
-
+<br>
 
 ##### Table displaying average Limb Volume by Species
 ```{r}
@@ -44,7 +50,7 @@ limbdat %>%
   group_by(Organism)%>%
   summarize(Average_Limb_Volume = mean(Limb_volume))
 ```
-
+<br>
 
 ##### Table displaying number of observations by Species x Observer
 ```{r}
@@ -52,11 +58,14 @@ limbdat %>%
   group_by(Organism, Observer) %>%
   count()
 ```
+<br>
 
 ##### Box plot comparing species limb volume
 ```{r}
 ggplot(limbdat, aes(x=Organism, y=Limb_volume)) + geom_boxplot() + xlab("\n Species") + ylab("Limb Volume \n") + theme_bw() + labs(title = "Limb Volume Frequency for Capuchin Monkeys", caption = "\n\n Figure 1. Limb volume distributions for 100 random samples of 5 species of capuchin monkey") + theme(plot.title = element_text(hjust = 0.5), plot.caption = element_text(hjust = 0.5))
 ```
+
+<br>
 
 ##### Multi-panel plot showing frequency histograms for each species
 ```{r}
